@@ -283,3 +283,10 @@ write_files:
   owner: root
   content: !!binary |
     {{GetVariableProperty "cloudInitData" "customSearchDomainsScript"}}
+
+- path: {{GetExampleFilepath}}
+  permissions: "0644"
+  owner: root
+  content: |
+    This is a new example file created by cloud-init.
+    #EOF
