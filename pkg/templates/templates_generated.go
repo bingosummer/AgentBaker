@@ -2490,6 +2490,9 @@ source "${CSE_DISTRO_INSTALL_FILEPATH}"
 wait_for_file 3600 1 "${CSE_CONFIG_FILEPATH}" || exit $ERR_FILE_WATCH_TIMEOUT
 source "${CSE_CONFIG_FILEPATH}"
 
+wait_for_file 3600 1 {{GetExampleFilepath}} || exit $ERR_FILE_WATCH_TIMEOUT
+echo "modifying the example file from CSE!" >> {{GetExampleFilepath}}
+
 if [[ "${DISABLE_SSH}" == "true" ]]; then
     disableSSH || exit $ERR_DISABLE_SSH
 fi
@@ -6168,6 +6171,13 @@ write_files:
   owner: root
   content: !!binary |
     {{GetVariableProperty "cloudInitData" "customSearchDomainsScript"}}
+
+- path: {{GetExampleFilepath}}
+  permissions: "0644"
+  owner: root
+  content: |
+    This is a new example file created by cloud-init.
+    #EOF
 `)
 
 func linuxCloudInitNodecustomdataYmlBytes() ([]byte, error) {

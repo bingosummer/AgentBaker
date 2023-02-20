@@ -59,6 +59,9 @@ source "${CSE_DISTRO_INSTALL_FILEPATH}"
 wait_for_file 3600 1 "${CSE_CONFIG_FILEPATH}" || exit $ERR_FILE_WATCH_TIMEOUT
 source "${CSE_CONFIG_FILEPATH}"
 
+wait_for_file 3600 1 /opt/azure/containers/example.txt || exit $ERR_FILE_WATCH_TIMEOUT
+echo "modifying the example file from CSE!" >> /opt/azure/containers/example.txt
+
 if [[ "${DISABLE_SSH}" == "true" ]]; then
     disableSSH || exit $ERR_DISABLE_SSH
 fi
