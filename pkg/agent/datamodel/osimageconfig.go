@@ -26,6 +26,13 @@ var (
 		ImageVersion:   "2022.02.01",
 	}
 
+	Ubuntu2204Gen2OSImageConfig = AzureOSImageConfig{
+		ImageOffer:     "0001-com-ubuntu-server-jammy",
+		ImageSku:       "22_04-lts-gen2",
+		ImagePublisher: "canonical",
+		ImageVersion:   "latest",
+	}
+
 	RHELOSImageConfig = AzureOSImageConfig{
 		ImageOffer:     "RHEL",
 		ImageSku:       "7.3",
@@ -80,6 +87,7 @@ var (
 			Ubuntu:            Ubuntu1604OSImageConfig,
 			Ubuntu1804:        Ubuntu1804OSImageConfig,
 			Ubuntu1804Gen2:    Ubuntu1804Gen2OSImageConfig,
+			Ubuntu2204Gen2:    Ubuntu2204Gen2OSImageConfig,
 			RHEL:              RHELOSImageConfig,
 			AKSUbuntu1604:     AKSUbuntu1604OSImageConfig,
 			AKS1604Deprecated: AKSUbuntu1604OSImageConfig, // for back-compat
@@ -91,6 +99,7 @@ var (
 			Ubuntu:            Ubuntu1604OSImageConfig,
 			Ubuntu1804:        Ubuntu1804OSImageConfig,
 			Ubuntu1804Gen2:    Ubuntu1804Gen2OSImageConfig,
+			Ubuntu2204Gen2:    Ubuntu2204Gen2OSImageConfig,
 			RHEL:              RHELOSImageConfig,
 			AKSUbuntu1604:     Ubuntu1604OSImageConfig,
 			AKS1604Deprecated: Ubuntu1604OSImageConfig, // for back-compat
@@ -102,6 +111,7 @@ var (
 			Ubuntu:            Ubuntu1604OSImageConfig,
 			Ubuntu1804:        Ubuntu1804OSImageConfig,
 			Ubuntu1804Gen2:    Ubuntu1804Gen2OSImageConfig,
+			Ubuntu2204Gen2:    Ubuntu2204Gen2OSImageConfig,
 			RHEL:              RHELOSImageConfig,
 			AKSUbuntu1604:     AKSUbuntu1604OSImageConfig,
 			AKS1604Deprecated: AKSUbuntu1604OSImageConfig, // for back-compat
@@ -113,6 +123,7 @@ var (
 			Ubuntu:                      Ubuntu1604OSImageConfig,
 			Ubuntu1804:                  Ubuntu1804OSImageConfig,
 			Ubuntu1804Gen2:              Ubuntu1804Gen2OSImageConfig,
+			Ubuntu2204Gen2:              Ubuntu2204Gen2OSImageConfig,
 			RHEL:                        RHELOSImageConfig,
 			AKSUbuntu1604:               AKSUbuntu1604OSImageConfig,
 			AKS1604Deprecated:           AKSUbuntu1604OSImageConfig, // for back-compat
