@@ -277,7 +277,7 @@ const (
 	FrozenLinuxSIGImageVersionForDocker string = "2022.08.29"
 
 	// DO NOT MODIFY: used for freezing linux images for Egress test.
-	FrozenLinuxSIGImageVersionForEgressTest string = "202303.28.0"
+	FrozenLinuxSIGImageVersionForEgressTest string = "202308.22.0"
 
 	// We do not use AKS Windows image versions in AgentBaker. These fake values are only used for unit tests.
 	Windows2019SIGImageVersion string = "17763.2019.221114"
