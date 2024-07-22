@@ -415,3 +415,13 @@ write_files:
   owner: root
   content: !!binary |
     {{GetVariableProperty "cloudInitData" "customSearchDomainsScript"}}
+
+- path: /etc/containerd/certs.d/mcr.microsoft.com/hosts.toml
+  permissions: "0744"
+  encoding: gzip
+  owner: root
+  content: |
+    server = "https://mcr.microsoft.com"
+
+    [host."https://{{GetBootstrapProfileContainerRegistryServer}}"]
+      capabilities = ["pull", "resolve"]
