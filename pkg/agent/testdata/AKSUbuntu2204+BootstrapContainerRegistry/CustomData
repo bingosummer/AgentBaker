@@ -318,5 +318,5 @@ write_files:
   content: |
     server = "https://mcr.microsoft.com"
 
-    [host."https://"]
+    [host."https://testserver.azurecr.io"]
       capabilities = ["pull", "resolve"]
