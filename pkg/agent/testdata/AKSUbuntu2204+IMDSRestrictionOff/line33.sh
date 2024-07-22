@@ -52,7 +52,7 @@ if [[ "${DISABLE_SSH}" == "true" ]]; then
     disableSSH || exit $ERR_DISABLE_SSH
 fi
 
-echo "private egress proxy address is '${PRIVATE_EGRESS_PROXY_ADDRESS}'"
+echo "private egress proxy address is '${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}'"
 
 if [[ "${SHOULD_CONFIGURE_HTTP_PROXY}" == "true" ]]; then
     if [[ "${SHOULD_CONFIGURE_HTTP_PROXY_CA}" == "true" ]]; then
