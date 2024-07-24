@@ -336,7 +336,7 @@ EOF
   tee "/etc/containerd/certs.d/mcr.microsoft.com/hosts.toml" > /dev/nul <<EOF
 server = "https://mcr.microsoft.com"
 
-[host."https://${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}"]
+[host."https://${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/aks-addon-mcr"]
   capabilities = ["pull", "resolve"]
 EOF
 
