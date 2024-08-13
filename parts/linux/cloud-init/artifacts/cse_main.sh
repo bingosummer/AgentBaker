@@ -59,6 +59,7 @@ fi
 # This involves using proxy, log the config before fetching packages
 echo "private egress proxy address is '${PRIVATE_EGRESS_PROXY_ADDRESS}'"
 # TODO update to use proxy
+echo "hello, tongyao"
 
 if [[ "${SHOULD_CONFIGURE_HTTP_PROXY}" == "true" ]]; then
     if [[ "${SHOULD_CONFIGURE_HTTP_PROXY_CA}" == "true" ]]; then
