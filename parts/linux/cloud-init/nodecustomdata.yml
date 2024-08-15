@@ -422,8 +422,6 @@ write_files:
   permissions: "0644"
   owner: root
   content: |
-    server = "https://mcr.microsoft.com"
-
     [host."https://{{GetBootstrapProfileContainerRegistryServer}}"]
       capabilities = ["pull", "resolve"]
 {{- end}}
