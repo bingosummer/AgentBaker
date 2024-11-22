@@ -429,6 +429,7 @@ write_files:
   permissions: "0644"
   owner: root
   content: |
-    [host."https://{{GetBootstrapProfileContainerRegistryServer}}"]
+    [host."https://{{GetBootstrapProfileContainerRegistryServer}}/v2/aks"]
       capabilities = ["pull", "resolve"]
+      override_path = true
 {{- end}}

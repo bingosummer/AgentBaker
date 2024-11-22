@@ -163,7 +163,7 @@ downloadCredentialProvider() {
     BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER:=}"
     # if BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER is set to non-empty string
     if [[ -n "${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}" ]]; then
-        local credential_provider_download_url_for_oras="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/${K8S_REGISTRY_REPO}/azure-acr-credential-provider:v${cred_version_for_oras}-linux-${CPU_ARCH}"
+        local credential_provider_download_url_for_oras="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/aks/${K8S_REGISTRY_REPO}/azure-acr-credential-provider:v${cred_version_for_oras}-linux-${CPU_ARCH}"
         CREDENTIAL_PROVIDER_TGZ_TMP="${CREDENTIAL_PROVIDER_DOWNLOAD_URL##*/}" # Use bash builtin ## to remove all chars ("*") up to the final "/"
         retrycmd_get_tarball_from_registry_with_oras 120 5 "$CREDENTIAL_PROVIDER_DOWNLOAD_DIR/$CREDENTIAL_PROVIDER_TGZ_TMP" "${credential_provider_download_url_for_oras}" || exit $ERR_ORAS_PULL_K8S_FAIL
         return 
@@ -260,7 +260,7 @@ downloadContainerdWasmShims() {
     # Oras download for WASM for Network Isolated Clusters
     BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER:=}"
     if [[ ! -z ${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER} ]]; then
-        local registry_url="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/oss/binaries/deislabs/containerd-wasm-shims:${shim_version}-linux-${CPU_ARCH}"
+        local registry_url="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/aks/oss/binaries/deislabs/containerd-wasm-shims:${shim_version}-linux-${CPU_ARCH}"
         local wasm_shims_tgz_tmp=$containerd_wasm_filepath/containerd-wasm-shims-linux-${CPU_ARCH}.tar.gz
 
         retrycmd_get_tarball_from_registry_with_oras 120 5 "${wasm_shims_tgz_tmp}" ${registry_url} || exit $ERR_ORAS_PULL_CONTAINERD_WASM
@@ -316,7 +316,7 @@ downloadSpinKube(){
 
     BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER:=}"
     if [[ ! -z ${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER} ]]; then
-        local registry_url="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/oss/binaries/spinkube/containerd-shim-spin:${shim_version}-linux-${CPU_ARCH}"
+        local registry_url="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/aks/oss/binaries/spinkube/containerd-shim-spin:${shim_version}-linux-${CPU_ARCH}"
         local wasm_shims_tgz_tmp="${containerd_spinkube_filepath}/containerd-shim-spin-v2"
         retrycmd_get_binary_from_registry_with_oras 120 5 "${wasm_shims_tgz_tmp}" "${registry_url}" || exit $ERR_ORAS_PULL_CONTAINERD_WASM
         rm -f "$wasm_shims_tgz_tmp"
@@ -606,7 +606,7 @@ installKubeletKubectlAndKubeProxy() {
             if [[ ! -z ${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER} ]]; then
                 # network isolated cluster
                 echo "Detect Bootstrap profile artifact is Cache, will use oras to pull artifact binary"
-                registry_url="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/${K8S_REGISTRY_REPO}/kubernetes-node:v${KUBERNETES_VERSION}-linux-${CPU_ARCH}"
+                registry_url="${BOOTSTRAP_PROFILE_CONTAINER_REGISTRY_SERVER}/aks/${K8S_REGISTRY_REPO}/kubernetes-node:v${KUBERNETES_VERSION}-linux-${CPU_ARCH}"
                 K8S_DOWNLOADS_TEMP_DIR_FROM_REGISTRY="/tmp/kubernetes/downloads" # /opt folder will return permission error
                 logs_to_events "AKS.CSE.installKubeletKubectlAndKubeProxy.extractKubeBinaries" extractKubeBinaries ${KUBERNETES_VERSION} $registry_url false ${K8S_DOWNLOADS_TEMP_DIR_FROM_REGISTRY}
                 # no egress traffic, default install will fail
